@@ -9,14 +9,26 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://kit.fontawesome.com/5b70548259.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@400;700&family=Monoton&family=PT+Mono&family=Questrial&family=Raleway:wght@300;400;600;700&family=Righteous&family=Urbanist:wght@300;400;500;600&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
+    <% if notice %>
+      <div class="flex flex-row absolute left-10 bottom-10">
+        <%= render 'layouts/alerts' %>
+      </div>
+    <% end %>
+    
+    <% if user_signed_in? %>
+      <div class="ml-5 mt-5">
+        <%= render 'layouts/nav' %>
+      </div>
+    <% end %>
+    
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
+  
   </body>
 </html>
